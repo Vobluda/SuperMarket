@@ -25,6 +25,9 @@ public class Queue {
     }
 
     public Customer dequeue() {
+        if (head==null) {
+            System.out.println("HEAD IS NULL IDIOT!");
+        }
         Customer data = head.data;
         head = head.next;
         return data;
@@ -33,10 +36,14 @@ public class Queue {
     public void incrementTime() {
         Node curr;
         curr = head;
-        head.data.incrementTimeWaited();
-        while (curr.next!=null) {
-            curr = curr.next;
-            curr.data.incrementTimeWaited();
+        if (head!=null) {
+            head.data.incrementTimeWaited();
+        }
+        if (curr!=null) {
+            while (curr.next != null) {
+                curr = curr.next;
+                curr.data.incrementTimeWaited();
+            }
         }
     }
 
@@ -44,9 +51,11 @@ public class Queue {
         Node curr;
         curr = head;
         int output = 1;
-        while (curr.next!=null) {
-            curr = curr.next;
-            output ++;
+        if (curr!=null) {
+            while (curr.next!=null) {
+                curr = curr.next;
+                output ++;
+            }
         }
         return output;
     }
@@ -55,16 +64,18 @@ public class Queue {
         System.out.println("Front of queue: " + head.data);
     }
 
-    /*public void displayAll() {
+    public void displayAll() {
         String output = "";
         Node curr = head;
-        while (curr.next!=null) {
-            output += curr.data;
-            output += ", ";
-            curr = curr.next;
+        if (curr!=null) {
+            while (curr.next != null) {
+                output += curr.data;
+                output += ", ";
+                curr = curr.next;
+            }
+            output+=curr.data;
         }
-        output+=curr.data;
         System.out.print("Entire queue: ");
         System.out.println(output);
-    }*/
+    }
 }
