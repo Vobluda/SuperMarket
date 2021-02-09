@@ -23,8 +23,8 @@ public class Customer {
     }
 
     public void hasBeenServiced() {
-        if (minutesBeingServiced <=  serviceTime) {
+        if (minutesBeingServiced >=  serviceTime) {
             hasBeenServiced = true;
-        } else { hasBeenServiced =  false; }
+        } else { hasBeenServiced =  false; minutesBeingServiced++; }
     }
 }

@@ -26,7 +26,7 @@ public class Checkout {
             curr = waiting.dequeue();
             System.out.println("Dequeueing customer " + curr.ID);
             curr.generateServiceTime();
-        } else { System.out.println("Dequeueing customer " + curr.ID); curr = null; }
+        } else { curr = null; }
     }
 
     public boolean isCurrFinished() {
