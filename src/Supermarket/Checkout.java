@@ -1,35 +1,23 @@
 package Supermarket;
 
-import java.sql.SQLOutput;
-
 public class Checkout {
     Queue waiting = new Queue();
     Customer curr;
 
-    public void addCustomer(int ID) {
+    public void addCustomer(int ID) { //method to add a customer to the specific queue
         Customer customer = new Customer(ID);
         System.out.println("New customer in queue: " + customer.ID);
         waiting.enqueue(customer);
     }
 
-    private boolean isCurrEmpty() {
-        try {
-            curr.ID = curr.ID;
-            return false;
-        } catch (Exception e) {
-            return true;
-        }
-    }
-
-    public void moveFromQToCurr() {
+    public void moveFromQToCurr() { //method to move the person in front of queue to curr (person currently being checked out)
         if (waiting.head!=null) {
             curr = waiting.dequeue();
-            System.out.println("Dequeueing customer " + curr.ID);
             curr.generateServiceTime();
         } else { curr = null; }
     }
 
-    public boolean isCurrFinished() {
+    public boolean isCurrFinished() { //checks whether or not the person being checked out is finished
         try {
         if (curr.hasBeenServiced) { return true; } else { return false; }
         } catch(Exception e) {return true;}
